@@ -20,13 +20,16 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 # ================= CONFIG =================
 
-TOKEN    = "8840864571:AAFacYXDGqSJ352sRmJn2vHlRnHf28n8JjI"
+import os
+TOKEN    = os.getenv("TOKEN", "8840864571:AAFacYXDGqSJ352sRmJn2vHlRnHf28n8JjI")
 ADMIN_ID = 6137921070
 PRICE_PER_HOUR     = 10_000   # so'm
 FSM_TIMEOUT_MINUTES = 10      # daqiqa
 
-DB_PATH = "booking.db"
-WEBAPP_URL = "https://YOUR_GITHUB_USERNAME.github.io/cyber-arena/menu.html"  # <-- o'zgartiring
+import os
+os.makedirs("/data", exist_ok=True)
+DB_PATH = "/data/booking.db"
+WEBAPP_URL = "https://forsvpotoke.github.io/bot-menu/menu.html"
 
 bot       = Bot(token=TOKEN)
 dp        = Dispatcher(storage=MemoryStorage())
@@ -158,11 +161,10 @@ async def start(message: Message, state: FSMContext):
         await message.answer("⛔ Siz bloklangansiz!")
         return
     text = (
-        "🎮 <b>CYBER ARENA</b>\n\n"
+        "🎮 <b>FORS GameClub</b>\n\n"
         "🔥 Premium Gaming Zone\n"
-        "🖥 RTX Gaming PCs\n"
         f"💰 Narx: {PRICE_PER_HOUR:,} so'm/soat\n"
-        "⚡ 24/7 Booking System\n"
+        "⚡ 24/7 Bron Qilish Sistemasi\n"
         "☕ Chill Zone\n\n"
         "👇 Bron qilish uchun tugmani bosing"
     )
